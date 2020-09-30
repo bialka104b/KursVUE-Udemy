@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-model="text">
+        <p>Wprowadzony text to: {{text}}</p>
+    </div>
+
+    <!-- ten program powoduje nam możliwośc wpisywania i usuwania danych do input które z automatu pojawią sie w tagu p i będą tez z automatu usuwane. Wszystko w czasie rzeczywistym -->
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        let vueSet = new Vue({
+            el: '#app',
+            data: {
+                text: ""
+            }
+        });
+    </script>
+</body>
+
+</html>

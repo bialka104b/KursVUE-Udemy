@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+    <style>
+        .font {
+            font-size: 24px;
+        }
+
+        .color {
+            color: greenyellow;
+        }
+
+        .background {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <!--                          {nazwa właściwości: nazwa zmiennej} -->
+        <p class="font" v-bind:style="{color:fontColor, backgroundColor: bgColor}">text</p>
+        <p class="font" v-bind:style="objectStyle">text</p><!-- przekzaujemy objectStzle aby kilkukronie nie przekazywać róznych właściwości -->
+        <p class="font" v-bind:style="[objectStyle, {backgroundColor: bgColor}]">text</p><!--Połączenie obu metod w postaci tablicy-->
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                fontColor: 'green',
+                bgColor: 'greenyellow',
+                
+                objectStyle: {
+                    color: "purple",
+                    backgroundColor: 'lightskyblue',// tutaj odwołujemy sie już bezpośrednio do nazw wađciwosci
+                    fontSize:'38px'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

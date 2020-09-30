@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <parzyste></parzyste>
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        //component definiowany GLOBALNIE
+        //           (nazwa komponentu, {właściwości naszego komponentu})
+        Vue.component('parzyste', {
+            template: `<p>To są liczby parzyste {{liczbyParzyste}}</p>`,
+            //tworzymy funkcje data po to aby w różnych obiektach były różne dane. Gdybyśmy stworzyli tylko obiekt to wszystkie dane były by takie same
+            data() {
+                return {
+                    liczby: [2,3,4,5,6]
+                };
+            },
+            //tworzymy obiekt computed tak aby nasza tablica była przefiltrowana i zawierała tylko liczby parzyste
+            computed: {
+                liczbyParzyste(){
+                    //filtrujemy każda (liczba) => to liczba podzielna przez 2
+                    return this.liczby.filter((liczba) => liczba % 2 === 0);
+                }
+            }
+        })
+        //tak zdefiniowany komponent będzie dostępny we wszystkich plikach naszego projektu
+        let vueSet = new Vue({
+            el: '#app',
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- poniżej wywołanie funkcji hello z sekcji methods -->
+        <p>Koszt produktu: {{ produkt | rodzajWaluty('$') }} </p>
+        <!-- ten dolar zostanie przekazany do zmiennej symbolWaluty -->
+    </div>
+
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        let vueSet = new Vue({
+            el: '#app',
+            data: {
+                produkt: 1234//ta liczba zostanie zamieniona na 12.34 za pomoca funkcji rodzaj waluty
+            },
+            filters: {//wykorzystano zmienną liczby z obiektu data:
+                rodzajWaluty(value, symbolWaluty) {
+                    //toFixed(2) -formatuje liczbe do dwóch miejsc po przecinku
+                    return symbolWaluty + (value/100).toFixed(2)
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

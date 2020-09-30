@@ -1,0 +1,1 @@
+W tej lekcji pokazano jak stosować if else w tagach html

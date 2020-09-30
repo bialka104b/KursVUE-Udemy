@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+    <style>
+        /* -enter-active  czyli co ma się dziać gdy animacja sie pojawia */
+        .showelements-enter-active {
+            animation: showHide .5s;
+        }
+        /* -leave-active czyli co ma się dziać gdy animacja sie chowa */
+        .showelements-leave-active {
+            /* wykorzystujemy tu tą sama animacje ale w odwrotnej kolejności */
+            animation: showHide .5s reverse;
+        }
+
+        @keyframes showHide {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- po kliknięciu będzie się zmieniał stan zmiennej show -->
+        <button @click="show = !show">Pokaz / Ukryj</button>
+        <!-- transition to element dostarczany przez Vue-->
+        <transition name="showelements">
+            <p v-if="show">Tekst ktory pojawia sie i znika</p>
+        </transition>
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                show: true,
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+    <div id="app">
+        <p v-if="rano">Rano</p>
+        <p v-if="poludnie">poludnie</p>
+        <p v-if="wieczor">Wieczor</p>
+        <!-- zmienne rano popołudnie i wieczor bedą wyświetlane w zależności od aktualnej godziny serwera
+        v-if="zmienna" nazywamy dyrektywami warunkowymi -->
+    </div>
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        const godzina = new Date().getHours();
+        new Vue({
+            el: '#app',
+            data: {//tworzenie zmiennej messege
+                rano: godzina<12,//zmienna sprawdzająca czy aktualna pobrana godzina z przeglądarki jest mniejsza niż 12 itd
+                popoludnie: godzina>=12 && godzina<18,
+                wieczor: godzina >=18
+            }
+        });
+    </script>
+</body>
+
+</html>

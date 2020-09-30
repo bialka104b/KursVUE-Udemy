@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>{{all}}</p>
+        <!-- przypisujemy buttonowi zdarzenie przez dyrektywe v-on -->
+        <my-button v-on:zwieksz="increaseAll">cacaca</my-button>
+        <my-button v-on:zwieksz="increaseAll">cacaca</my-button>
+    </div>
+
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        //KOMPONENT PRZEKAZUJE NAM ILOŚĆ KLIKNIĘĆ Z KILKU BUTTONÓW DO JEDNEGO P
+        //MOŻNA TO WYKORZYSTAĆ PRZY MOIM KALKULATORZE
+        Vue.component('my-button', {
+            template: '<button v-on:click="increaseCounter">{{counter}}</button>', //metoda reaguje na kliknięcia
+            data() {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                increaseCounter(){
+                    this.counter++;
+                    this.$emit('zwieksz');
+                    console.log("zwieksz emit");
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
+            data: {
+                all: 0
+            },
+            methods: {
+                increaseAll() {
+                    this.all++;//zwiększamy zmienna all z tagu <p> o 1
+                    console.log(this.all);
+                    console.log("increaseAll()");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>Jesteś {{seconds}} sekund na stronie</p>
+    </div>
+
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        let vueSet = new Vue({
+            el: '#app',
+            data: {
+                seconds: 0,
+                tablica: [12, 2, 5, 6]
+            },
+            // funkcja ma wyświetlić uzytkownikowi na stronie ile już jest na tej stronie
+            created() {//funkcja created która będzie coś wykonywała co określoną ilość czasu w nieskończoność
+                setInterval(() => {
+                    this.seconds++;//zwiększamy za każdym razem ilość sekund o 1
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+
+</html>

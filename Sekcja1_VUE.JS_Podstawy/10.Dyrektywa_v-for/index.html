@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- wypisze wszystkie imie z tablicy imiona tworzą do każdego nowe li -->
+            <li v-for="imie in imiona">{{imie}}</li>
+            <li v-for="(klub, miasto) in kluby">{{miasto}}: {{klub}}</li>
+            <!-- v-for="(wartość, klucz) in nazwaObiektu" -->
+            <li v-for="n in 10">Wyświetlam {{n}} liczbe</li>
+        </ul>
+    </div>
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                imiona: ["marta", "gienek", "zuza", "Olek"],
+                kluby: {
+                    londyn: "arsenal londyn",
+                    barcelona: "FC barcelona",
+                    turyn: "Juventus turyn"
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

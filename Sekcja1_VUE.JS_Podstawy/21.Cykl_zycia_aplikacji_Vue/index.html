@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- dyrektywa v-on na zdarzenie click która wywołuje funkcje zwieksz -->
+        <button v-on:click="zwieksz" type="submit">Button</button>
+        <!--SKRÓCONY ZAPIS <button @click="zwieksz" type="submit">Button</button> -->
+        <p >Przycisk został przyciśnięty {{x}} razy</p>
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        let vueSet = new Vue({
+            el: '#app',
+            data: {
+                
+            },
+            beforeCreate: {
+                //zaraz po utworzeniu nowej instacji Vue wywoływana jest ta metoda
+            },
+            created: {
+                //następnie wywoływany jest created, jest to moment tuż przed dodaniem elementów do JS DOM
+            },
+            beforeMount: {
+                //moment w którym elementy są gotowe na dodawanie do JS DOM
+            },
+            mounted: {
+                //elementu są utworzone ale nie koniecznie dodane do JS DOM
+                jakasMetoda() {
+                    Vue.nextTick(()=>{
+                        //w tym miejscu elementy są już dodane do JS DOM
+                    })
+                }
+            },
+            beforeUpdate: {
+                //wywoływane jest gdy są zmiany do wykonania na JS DOM
+            },
+            updated:{
+                //wywoływane gdy zmiany zostaną zapisane w JSDOM
+            },
+            beforeDestroy: {
+                //obiekt jest gotowy do usunięcia
+            },
+            destroyed: {
+                //moment gdy obiekt został już usunięty z JS DOM
+            }
+        });
+    </script>
+</body>
+
+</html>

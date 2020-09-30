@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+    <div id="app">
+        
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            render(createElement){
+                //ta funkcja może przyjmować 3 parametry
+                //createElement(nazwa znacznika(wymagany), obiekt konfiguracyjny gdzie można przekazać atrybuty i właściwości, węzeł childNode czyli tekst w naszym elemencie)
+                // return createElement('h1', "Witaj we vue")
+                // return createElement(this.tag, "Witaj we vue")
+                return createElement(
+                    this.tag, 
+                    {
+                        attrs: {
+                            type: 'submit'
+                        },
+                        props: {
+                            foo: 'bar'
+                        },
+                        domProps: {//podmieni nam tekst z "Witaj we vue" na "Jakis tekst"
+                            //można tu przekazać zarówno pojedynczy String jak i tablice
+                            innerHTML: "Jakis tekst"
+                        },
+                        on: {//nasłuchiwanie zdarzenia click
+                            click:this.naszaMetoda
+                        },
+                        slot: "Przykładowy slot, tekst itd",
+                        ref: "Przykładowy ref, tekst itd",
+                        class: ['container', {'bold':true}],//przekazywanie klas do elementu
+                        style: {bacgroundColor: 'blue'}//przekazywanie klas do elementu
+                    },
+                    "Witaj we vue",
+                    this.$slots.default
+                );
+            },
+            data:{
+                tag: 'button'
+            }
+        });
+    </script>
+</body>
+
+</html>

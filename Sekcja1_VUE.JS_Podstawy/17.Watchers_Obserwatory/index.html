@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- poniżej wywołanie funkcji hello z sekcji methods -->
+        <p>Suma liczb to {{ liczba }}</p>
+    </div>
+
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        let vueSet = new Vue({
+            el: '#app',
+            data: {
+                liczba:  12
+            },
+            watchers: {//wykorzystano zmienną liczby z obiektu data:
+                liczba() {
+                    //kod który ma byc wykonywany w przypadku zmiany wartości liczba
+                    return this.liczba.reduce((sum, value) => {
+                        return sum + value
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+używamy tablic do wyświetlania danych za pomocą interpolacji
+
+{{zmienna}} Interpolacja

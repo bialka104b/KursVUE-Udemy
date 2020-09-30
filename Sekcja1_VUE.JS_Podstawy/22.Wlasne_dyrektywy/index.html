@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- Jako parametr dyrektywy v-zmien przekazujemy czas w milisekundach do zmiennej time -->
+        <p v-zmien="500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni commodi inventore in
+            asperiores ipsam reiciendis quos libero, eos sunt, unde, ea iusto ex autem est. Explicabo minus debitis vel
+            ullam.</p>
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        let vueSet = new Vue({
+            el: '#app',
+            data: {
+            },
+            directives: {
+                //nazwy dyrektyw nie piszemy camelCase bo nie działa
+                zmien: {
+                    //bindojemy element app
+                    bind(el, time) {
+                        //metoda co 1 sekunde zmieni kolor textu
+                        let redColor = true;
+                        setInterval(() => {
+                            redColor = !redColor;//zmiennej red color przypisujemy false
+                            // skoro redColor jest teraz false to kolor zmieni sie na green i tak w kółko
+                            el.style.color = redColor ? 'red' : "green";
+                        }, time.value || 1000);//wartość przekazana jako parametr do tagu p, lub jak nie podano to 1000ms
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

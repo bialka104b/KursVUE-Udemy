@@ -1,0 +1,3 @@
+two way data banding - dwustronne wiązanie danych
+Dwustronne wiązanie danych zapewnia dyrektywa v-model
+

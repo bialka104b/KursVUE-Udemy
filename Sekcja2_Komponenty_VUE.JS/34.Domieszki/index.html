@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <new-component></new-component>
+    </div>
+    
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        //MIXIN TO SPOSÓB na przechowywanie kodu który może być reuzywalny pomiędzy róznymi elementami
+        const mixin = {
+            created(){
+               console.log("czesc, tu funkcja created z mixins");
+            },
+            methods: {
+                test(){
+                    console.log("czesc z metody test w domieszce mixin");
+                }
+            }
+        }
+        Vue.component('new-component', {
+            template: '<p>Nowy komponent</p>',
+            mixins: [mixin],//nazwa domieszkizdeklarowanej w linijce 23
+            created() {
+                this.hello();
+            },
+            methods: {
+                hello(){
+                    console.log("czesc, tu funkcja hello");
+                    this.test();
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
+        });
+    </script>
+</body>
+
+</html>

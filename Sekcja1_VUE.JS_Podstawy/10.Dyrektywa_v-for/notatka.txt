@@ -1,0 +1,1 @@
+dyrektywa v-for to pętla for

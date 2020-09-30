@@ -1,0 +1,21 @@
+{
+  "name": "40.vue-i-sass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@vue/cli": "^4.5.6",
+    "@vue/cli-init": "^4.5.6",
+    "vue": "^2.6.12",
+    "webpack": "^4.44.2"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "sass-loader": "^10.0.2"
+  },
+  "scripts": {
+    "dev": "vue init webpack main"
+  },
+  "author": "",
+  "license": "ISC"
+}

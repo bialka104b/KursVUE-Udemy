@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- MODYFIKATOR SYNC poniżej 2 rózne zapisy tego samego znaczenia -->
+        <show-time v-bind:seconds.sync='seconds1'></show-time>
+        <show-time v-bind:seconds='seconds1' @update:seconds="value => seconds1 = value"></show-time>
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        Vue.component('show-time', {
+            //nasz wstawiany obiekt
+            template: "<p>Jesteś {{seconds}} sekund na stronie</p>",
+            props: {
+                seconds: {//wykorzystanie CAMELCASE które przez Vue zostanie zamienione na "color-text"
+                    type: Number,
+                    required: true
+                }
+            },
+            computed: {
+                tymczasowy_czas: {
+                    get(){//pobieranie wartości
+                        return this.seconds
+                    },
+                    set(value){//ustawianie czasu
+                        //emitujemy zdarzenie o nazwie 'update:seconds', seconds oznacza co aktualizujemy
+                        this.$emit('update:seconds', value)
+                    }
+                }
+            },
+            mounted(){
+                setInterval(() => {
+                    //zwiększamy nasz tymczasowy czas
+                    this.tymczasowy_czas++;
+                }, 1000);
+            }
+        });
+        new Vue({
+            el: '#app',
+            data: {
+                seconds1: 0
+            },
+            //tworzymy funkcje która jest wywoływana w momencie tworzenia instancji
+            created() {
+                setInterval(()=> {
+                    this.second++;
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+
+</html>

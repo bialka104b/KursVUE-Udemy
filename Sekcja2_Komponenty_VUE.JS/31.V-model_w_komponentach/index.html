@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>{{name}}</p>
+        <provide-name v-model="name"></provide-name>
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        Vue.component('provide-name', {
+            //nasz wstawiany obiekt
+            template: "<input type='text' v-bind:value='val' @input='obsluzPole'>",
+            props: {
+                value: {
+                    type: String,
+                    required: true
+                }
+            },
+            methods: {
+                obsluzPole(e){//e czyli to co będzie pobierane z naszego inputa
+                    // nasz wartość z value bedzie pobrana i zamieniona na duże litery
+                    const myValue = e.target.value.toUpperCase();
+                    if(myValue !== e.target.value) {//jeśli moja wartosc jest rożna od pobranej z pola textowego
+                        e.target.value = myValue;//to do pobranej wartość przypisz wartość po zamienieniu liter z małych na duże
+                    }
+
+                    //emitujemy zdarzenie dla inputa
+                    this.$emit('input', myValue);//wstawiamy do inputa z powrotem litery zamienione na duże
+                    //efektu prawie nie widać, ale w inpucie da sie tylko pisać dużymi literami bo są one z automatu zamieniane przy pobraniu
+                }
+            }
+        });
+        new Vue({
+            el: '#app',
+            data: {
+                name: 'Marta'
+            }
+        });
+    </script>
+</body>
+
+</html>

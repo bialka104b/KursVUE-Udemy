@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- generujemy sobie inputy z odpowiednim type -->
+        <input v-bind:type="typ">
+        <!-- skrócony zapis dyrektywy v-bind, to samo znaczy co input wyżej -->
+        <input :type="typ">
+        <input v-bind:type="typ2">
+        <input v-bind:type="typ3">
+    </div>
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                typ: "password",
+                typ2: "number",
+                typ3: "text"
+            }
+        });
+    </script>
+
+</body>
+
+</html>

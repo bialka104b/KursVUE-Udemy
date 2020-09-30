@@ -1,0 +1,3 @@
+wszystkie  funkcje tworzymy w obiekcie methods
+wszystkie obiekty tworzymy w zmiennej data
+

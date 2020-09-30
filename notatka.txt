@@ -1,0 +1,34 @@
+KURS VUE.JS - tworzenie aplikacji webowych 
+UDEMY
+
+npm i -g @vue/cli  instalacja globalna vue
+npm i -g @vue/cli-init dodatek
+npm i -g vue
+
+npm run vue init webpack uruchomienie projektu za pomocą webpack pod warunkiem że są zainstalowane paczki node_modules w tym projekcie i jest package.json a cały folder jest pusty
+
+To get started:
+
+  cd init
+  npm run dev
+
+  {// package.json
+  "name": "sekcja1_vue.js_podstawy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@vue/cli": "^4.5.6",
+    "@vue/cli-init": "^4.5.6",
+    "vue": "^2.6.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "dev"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+WYKORZYSTANIE SASS
+npm install sass-loader node-sass style-loader --save-dev

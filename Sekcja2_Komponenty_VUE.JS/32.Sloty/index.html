@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <my-button>cacaca</my-button>
+        <!-- Tworzenie slotu już nazwanego -->
+        <my-button slot="name">slot name</my-button>
+    </div>
+    
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        Vue.component('my-button', {
+            //nasz wstawiany obiekt
+            template: "<button><slot>text</slot></button>",//dzięki <slot> nasz text z komponentu my-button trafia wprost do przycisku button 
+            //w htmlu będzie wyglądało to tak <div id="app"><button>Przyciśnij</button></div>
+            //można też pomiędzy <slot>text</slot> dodać domyślny tekst który będzie wyświetlany tylko w przypadku gdy nie podamy textu w komponencie my-button
+
+            // <!-- Tworzenie slotu już nazwanego -->
+            //template: "<button><slot name='name'>text</slot></button>",
+        });
+        new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <font-color color-text="violet" font_size=""></font-color>
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        Vue.component('font-color', {
+            //nasz wstawiany obiekt
+            template: "<p class='text__color' v-bind:style='style'> Lorem ipsum dolor sit</p>",
+            props: {
+                colorText: {//wykorzystanie CAMELCASE które przez Vue zostanie zamienione na "color-text"
+                    type: String,
+                    required: true
+                },
+                font_size: {
+                    type: Number,
+                    default: 16
+                }
+            },
+            computed: {
+                //definiowanie styli przekazywanych do v-bind:style
+                style() {
+                    return {
+                        color: this.colorText,//wykorzystanie CAMELCASE które przez Vue zostanie zamienione na "color-text" w komponencie w html
+                        fontSize: this.font_size + "px"
+                    };
+                }
+            }
+
+        });
+        new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- dyrektywa v-on na zdarzenie click która wywołuje funkcje zwieksz -->
+        <button v-on:click="zwieksz" type="submit">Button</button>
+        <!--SKRÓCONY ZAPIS <button @click="zwieksz" type="submit">Button</button> -->
+        <p >Przycisk został przyciśnięty {{x}} razy</p>
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        let vueSet = new Vue({
+            el: '#app',
+            data: {
+                x: 0
+            },
+            methods: {
+                zwieksz() {
+                    this.x++;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

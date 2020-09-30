@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <font-color color_text="violet" font_size="24"></font-color>
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        Vue.component('font-color', {
+            //nasz wstawiany obiekt
+            template: "<p class='text__color' v-bind:style='style'> Lorem ipsum dolor sit</p>",
+            props: ['color_text', 'font_size'],//ten props jest podawany w htmlu za pomocą atrybutu color_text, są to tak zwane propsy
+            computed: {
+                //definiowanie styli przekazywanych do v-bind:style
+                style() {
+                    return {
+                        //przypisujemy do zmiennej color wartość naszego propsa
+                        //zmienna color musi dać się wywołać bezpośrednio na stylach css, dlatego nazwa nie jest przypadkowa
+                        color: this.color_text,
+                        fontSize: this.font_size + "px"
+                    };
+                }
+            }
+
+        });
+        new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+
+</html>

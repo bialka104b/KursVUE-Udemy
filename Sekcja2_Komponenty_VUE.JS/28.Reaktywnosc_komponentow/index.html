@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <show-time v-bind:seconds='second'></show-time>
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        Vue.component('show-time', {
+            //nasz wstawiany obiekt
+            template: "<p>Jesteś {{seconds}} sekund na stronie</p>",
+            props: {
+                seconds: {//wykorzystanie CAMELCASE które przez Vue zostanie zamienione na "color-text"
+                    type: Number,
+                    required: true
+                }
+            }
+        });
+        new Vue({
+            el: '#app',
+            data: {
+                second: 0
+            },
+            //tworzymy funkcje która jest wywoływana w momencie tworzenia instancji
+            created() {
+                setInterval(()=> {
+                    this.second++;
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+
+</html>

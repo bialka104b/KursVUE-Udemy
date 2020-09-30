@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <my-paragraph></my-paragraph>
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        //component definiowany LOKALNIE
+        //component MyParagraf można wstawić do htmla ale z małych liter <my-paragraph>
+        //będzie on właśnie wskazywał na zmienną MyParagraph. treść tekstu jest istotna, wyjątkiem jest tylko pauza i małe litery.
+        const MyParagraph = {
+            template: "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni commodi inventore ea iusto ex autem est. Explicabo minus debitis</p>"
+        }
+        let vueSet = new Vue({
+            el: '#app',
+            components: {
+                //nazwy dyrektyw nie piszemy camelCase bo nie działa
+                MyParagraph
+            }
+        });
+    </script>
+</body>
+
+</html>

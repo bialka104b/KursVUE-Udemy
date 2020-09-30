@@ -1,0 +1,1 @@
+Dyrektywa v-show różni sie od dyrektywy v-if tym że przy v-show="false" do drzewa dom renderowane jest display none

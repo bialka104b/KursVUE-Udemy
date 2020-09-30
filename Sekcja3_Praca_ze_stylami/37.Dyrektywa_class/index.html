@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Vue.js</title>
+    <style>
+        .font {
+            font-size: 24px;
+        }
+
+        .color {
+            color: greenyellow;
+        }
+
+        .background {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- za pomocą v-bind przekazujemy obiekt za pomocą którego przekażemy klase kolor w zależności od zmiennej isColor  i isBackground-->
+
+        <p class="font" v-bind:class="{color:isColor, background: isBackground}">text</p>
+        <p class="font" v-bind:class="objectClass">text</p><!-- przekzaujemy objectClass aby kilkukronie nie przekazywać róznych właściwości -->
+        <p class="font" v-bind:class="[classColor, classBackground]">text</p><!-- przekzaujemy tablice z nazwami klas zamiast obiektu -->
+        <p class="font" v-bind:class="[{color:isColor}, classBackground]">text</p><!--Połączenie obu metod-->
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                //te 2 linijki są do pierwszego tagu p
+                isColor: true,//jesli jest true to właściwośc zostaje dodawana do aplikacji
+                isBackground: true,
+
+                // te4 linijki są do 2 tagu p
+                objectClass: {
+                    color: true,//jesli jest true to właściwośc zostaje dodawana do aplikacji
+                    background: true// tutaj odwołujemy sie już bezpośrednio do nazw klasy
+                },
+
+                // te2 linijki są do 3 tagu p
+                classColor: 'color', //zmienna w tablicy : nazwa klasy
+                classBackground: 'background'
+            }
+        });
+    </script>
+</body>
+
+</html>
