@@ -1,0 +1,5 @@
+w tej lekcji była sama teoria
+co to jest Flux - sposób przekazywania i wyświetlania danych
+Storage - skład aplikacji
+
+przechowywanie danych w stanie aplikacji

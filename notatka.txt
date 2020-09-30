@@ -5,12 +5,14 @@ npm i -g @vue/cli  instalacja globalna vue
 npm i -g @vue/cli-init dodatek
 npm i -g vue
 
-npm run vue init webpack uruchomienie projektu za pomocą webpack pod warunkiem że są zainstalowane paczki node_modules w tym projekcie i jest package.json a cały folder jest pusty
+npm run vue init webpack main (main wskazuje na nazwe folderu w którym ma byc zbudowany projekt) // uruchomienie projektu za pomocą webpack pod warunkiem że są zainstalowane paczki node_modules w tym projekcie i jest package.json a cały folder jest pusty
+//webpack też musi byc zainstalowany
+//inicjalizacja moze potrwac kilka minutcd
 
 To get started:
 
-  cd init
-  npm run dev
+  cd main (folder w którym został zbudowany projekt)
+  npm run dev //tego nie trzeba konfigurować w scripts
 
   {// package.json
   "name": "sekcja1_vue.js_podstawy",
