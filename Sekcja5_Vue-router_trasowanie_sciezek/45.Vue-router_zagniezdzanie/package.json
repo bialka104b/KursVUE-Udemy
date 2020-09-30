@@ -1,0 +1,17 @@
+{
+  "name": "45.vue-router_zagniezdzanie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vue init webpack main"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/cli": "^4.5.6",
+    "@vue/cli-init": "^4.5.6",
+    "vue": "^2.6.12",
+    "webpack": "^4.44.2"
+  }
+}

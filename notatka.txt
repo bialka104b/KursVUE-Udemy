@@ -24,7 +24,7 @@ To get started:
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "dev"
+    "dev": "vue init webpack main"
   },
   "author": "",
   "license": "ISC"
