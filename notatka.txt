@@ -1,5 +1,6 @@
 KURS VUE.JS - tworzenie aplikacji webowych 
 UDEMY
+npm init
 
 npm i -g @vue/cli  instalacja globalna vue
 npm i -g @vue/cli-init dodatek
