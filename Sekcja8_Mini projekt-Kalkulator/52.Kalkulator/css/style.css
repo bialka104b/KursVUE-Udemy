@@ -1,0 +1,45 @@
+body {
+  background-color: bisque;
+  font-family: "Sansita Swashed", cursive;
+  font-weight: 500;
+}
+
+body #calculator {
+  width: 300px !important;
+  height: 300px;
+}
+
+body .row {
+  margin: 2px 0;
+}
+
+body .show__calculator {
+  border: 1px solid #ffc107;
+  background-color: #ffe187;
+  text-align: right;
+  font-size: x-large;
+}
+
+body button {
+  margin: 0 2px;
+}
+
+body .cece {
+  padding: 0 !important;
+  margin: 0 2px;
+  position: static;
+}
+
+body .cece button {
+  width: 100%;
+  margin: 0;
+}
+
+body .cece.col-3 {
+  max-width: 23.5% !important;
+}
+
+body .cece.col-6 {
+  max-width: 48.5% !important;
+}
+/*# sourceMappingURL=style.css.map */

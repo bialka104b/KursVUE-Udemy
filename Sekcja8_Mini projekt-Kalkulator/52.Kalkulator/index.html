@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Kalkulator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <div id="app" class="mt-5">
+        <div id="calculator" class="container mt-5">
+            <div class="row my-2 show__calc">
+                <div class="col py-1 show__calculator">
+                    <span>{{showResult}}</span>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-6 cece">
+                    <!-- @click='' -->
+                    <button v-on:click="reset" class="col btn btn-primary">CE</button>
+                </div>
+                <div class="col-3 cece">
+                    <button @click='setnumber(".")' class="btn btn-warning">,</button>
+                </div>
+                <div class="col-3 cece">
+                    <button @click='operators = "+"' class="btn btn-warning">+</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <button @click='setnumber("7")' class="col btn btn-warning">7</button>
+                <button @click='setnumber("8")' class="col btn btn-warning">8</button>
+                <button @click='setnumber("9")' class="col btn btn-warning">9</button>
+                <button @click='operators = "-"' class="col btn btn-warning">-</button>
+            </div>
+            <div class="row">
+                <button @click='setnumber("4")' class="col btn btn-warning">4</button>
+                <button @click='setnumber("5")' class="col btn btn-warning">5</button>
+                <button @click='setnumber("6")' class="col btn btn-warning">6</button>
+                <button @click='operators = "*"' class="col btn btn-warning">*</button>
+            </div>
+            <div class="row">
+                <button @click='setnumber("1")' class="col btn btn-warning">1</button>
+                <button @click='setnumber("2")' class="col btn btn-warning">2</button>
+                <button @click='setnumber("3")' class="col btn btn-warning">3</button>
+                <button @click='operators = "/"' class="col btn btn-warning">/</button>
+            </div>
+            <div class="row">
+                <button @click='setnumber("0")' class="col btn btn-warning">0</button>
+                <button @click='calculate' class="col btn btn-primary">=</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- importujemy vue ze strony unpkg.com -->
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                a: '',
+                b: '',
+                sum: 0,
+                showResult: 0,
+                operators: null
+            },
+            methods: {
+                setnumber(number) {
+                    if (this.operators === null) {//jeżeli operator jest null
+                        this.a = this.a + number;//to przypisujemy ta liczbe do a jako string
+                        this.showResult = this.a;//przypisujemy wartośc do wyświetlacza
+                    } else {// jeśli operator nie jest null oznacza to że cos zostało wciśnięte
+                        this.b = this.b + number;//to przypisujemy ta drugą liczbe
+                        this.showResult = this.b;//przypisujemy wartośc do wyświetlacza
+                    }
+                },
+                calculate(){
+                    switch (this.operators) {
+                        case '+':
+                            this.sum = parseFloat(this.a) + parseFloat(this.b);//do naszej sumy przypisujemy a + b, liczby trzeba sparsowac bo były stringami
+                            break;
+                        case '-':
+                            this.sum = parseFloat(this.a) - parseFloat(this.b);//do naszej sumy przypisujemy a + b
+                            break;
+                        case '*':
+                            this.sum = parseFloat(this.a) * parseFloat(this.b);//do naszej sumy przypisujemy a + b
+                            break;
+                        case '/':
+                            this.sum = parseFloat(this.a) / parseFloat(this.b);//do naszej sumy przypisujemy a + b
+                            break;
+                    };
+                    this.showResult = this.sum;
+                    this.a = '' + this.sum + '';
+                    this.b = '';
+                    this.operators = null;
+                },
+                reset(){
+                    this.a = '';
+                    this.b= '';
+                    this.sum = 0;
+                    this.showResult = 0;
+                    this.operators = null;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

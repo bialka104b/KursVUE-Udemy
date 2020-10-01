@@ -1,0 +1,37 @@
+body {
+  background-color: bisque;
+  font-family: "Sansita Swashed", cursive;
+  font-weight: 500;
+  #calculator {
+    width: 300px !important;
+    height: 300px;
+  }
+  .row {
+    margin: 2px 0;
+  }
+  .show__calculator {
+    border: 1px solid #ffc107;
+    background-color: lighten($color: #ffc107, $amount: 25);
+    text-align: right;
+    font-size: x-large;
+  }
+  button {
+    // width: 20px;
+    margin: 0 2px;
+  }
+  .cece {
+	padding: 0 !important;
+	margin: 0 2px;
+	position: static;
+	button {
+		width:100%;
+		margin: 0;
+	}
+	&.col-3 {
+		max-width:23.5%!important;
+	}
+	&.col-6 {
+		max-width:48.5%!important;
+	}
+  }
+}
